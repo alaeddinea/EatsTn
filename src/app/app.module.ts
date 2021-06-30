@@ -112,7 +112,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatInputModule,
     MatFormFieldModule,
   ],
-  providers: [],
+  providers: [authInterceptorProviders,RestaurantService,ConfirmationService,CrudGlobalService, DatePipe,MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
