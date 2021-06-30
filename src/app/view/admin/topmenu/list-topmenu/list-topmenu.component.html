@@ -3,7 +3,7 @@
         selectionMode="single" [paginator]="true" [rowsPerPageOptions]="[5,10,20]" [rows]="10"
         [globalFilterFields]="['numParametre']">
         <ng-template pTemplate="caption">
-            <h2 class="text-center"> Liste Gamme de Prix </h2>
+            <h2 class="text-center"> Liste Top menu </h2>
 
             <div style="text-align: right">
                 <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
@@ -15,9 +15,9 @@
             <tr>
 
 
-                <th pSortableColumn="symbole"> symbole <p-sortIcon field="title"></p-sortIcon>
+                <th pSortableColumn="title"> titre <p-sortIcon field="title"></p-sortIcon>
                 </th>
-                <th pSortableColumn="description"> description<p-sortIcon field="libelle"></p-sortIcon>
+                <th pSortableColumn="numParametre"> image<p-sortIcon field="libelle"></p-sortIcon>
                 </th>
 
 
@@ -28,12 +28,13 @@
             <tr>
 
                 <th>
-                    <input pInputText type="search" (input)="dt1.filter($event.target.value, 'symbole', 'contains')"
-                        [value]="dt1.filters['symbole']?.value" placeholder="" class="p-column-filter">
+                    <input pInputText type="search" (input)="dt1.filter($event.target.value, 'title', 'contains')"
+                        [value]="dt1.filters['title']?.value" placeholder="" class="p-column-filter">
                 </th>
                 <th>
-                    <input pInputText type="search" (input)="dt1.filter($event.target.value, 'description', 'contains')"
-                        [value]="dt1.filters['description']?.value" placeholder="" class="p-column-filter">
+                    <input pInputText type="search"
+                        (input)="dt1.filter($event.target.value, 'numParametre', 'contains')"
+                        [value]="dt1.filters['numParametre']?.value" placeholder="" class="p-column-filter">
                 </th>
 
             </tr>
@@ -41,10 +42,11 @@
         <ng-template pTemplate="body" let-row>
             <tr>
                 <!-- <td> {{row.date | date: 'dd/MM/yyyy'}}</td>-->
-                <td> {{row.symbole}}</td>
-                <td> {{row.description}}</td>
+                <td> {{row.title}}</td>
+                <td> <img [src]='row.image' class="rounded-circle" width="60 " height="60"></td>
 
                 <td>
+
                     <button [disabled]="row.chercheur" class="btn btn-danger" (click)="showDialogDelete(row)"> <i
                             class="fa fa-trash" aria-hidden="true"></i>
                     </button>
@@ -63,18 +65,18 @@
 
 
 
-<p-dialog [(visible)]="displayAdd" [modal]="true" [responsive]="true" [style]="{width: '70%', minWidth: '200px'}"
+<!--<p-dialog [(visible)]="displayAdd" [modal]="true" [responsive]="true" [style]="{width: '70%', minWidth: '200px'}"
     [minY]="70" [baseZIndex]="10000">
     <p-header>
         <span class="ui-panel-title" style="font-size:18px;display:inline-block;margin-top:2px"><i
-                class="pi pi-ban"></i>
+                class="pi pi-ban"></i> 
         </span>
     </p-header>
 
     <div class="container">
         <div class="card ">
             <div class="card-header">
-                <h3>Ajouter un Gamme de Prix</h3>
+                <h3>Ajouter un element de menu</h3>
                 <p class="text-muted"> Veuillez saisir les informations suivantes </p>
             </div>
 
@@ -89,32 +91,22 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fa fa-cube" aria-hidden="true"></i>
                                         &ensp;<span>
-                                            <h6> symbole </h6>
+                                            <h6> title </h6>
                                         </span>
                                     </span>
                                 </div>
 
-                                <input minlength="2" type="text" class="form-control" placeholder="   symbole"
-                                    name="symbole" formControlName="symbole" id="title">
+                                <input minlength="2" type="text" class="form-control" placeholder="   titre"
+                                    name="title" formControlName="title" id="title">
                             </div>
                         </div>
                     </div>
                     <div class="row justify-content-center">
+
                         <div class="col-md-4">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fa fa-cube" aria-hidden="true"></i>
-                                        &ensp;<span>
-                                            <h6> description </h6>
-                                        </span>
-                                    </span>
-                                </div>
-
-                                <input minlength="2" type="text" class="form-control" placeholder="   description"
-                                    name="description" formControlName="description" id="title">
-                            </div>
+                            <input type="file" #file id="real" (change)="onFileChanged($event)">
+                            <img class="profile-img-card" (click)="file.click()" src={{url}} *ngIf="url">
                         </div>
-
 
                     </div>
 
@@ -183,4 +175,4 @@
     </p-footer>
 
 
-</p-dialog>
+</p-dialog>-->

@@ -1,0 +1,43 @@
+
+mat-form-field {
+  width: 50%;
+
+}
+div{
+  text-align: left;
+}
+   /* Mobile  On screens that are 375px wide or less, the background color is olive */
+ @media screen and (max-width: 768px) {
+  mat-form-field {
+    width: 100%;
+  } 
+ }
+
+
+ .map-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  
+  margin-right: 1%;
+  margin-top: 1%;
+  margin-left: 1%;
+  margin-bottom: 1%;
+}
+
+.map-frame {
+  border: 2px solid #218838;
+  height: 100%;
+  margin-bottom: 1%;
+
+}
+
+#map {
+  height: 100%; 
+}
+
+
+
+  

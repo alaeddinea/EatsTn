@@ -1,0 +1,100 @@
+<div class="row mt-2 justify-content-center ">
+    <div class="col-12 col-lg-6 text-center ">
+        <p class="lead small">Merci de saisir vos informations </p>
+    </div>
+</div>
+<form *ngIf="showNext" [formGroup]="addFormPerso" (ngSubmit)="next(addFormPerso)">
+    <div class="row justify-content-center">
+        <div class="col text-center">
+            <div class="form-check form-check-inline">
+                <input formControlName="sexe" class="form-check-input" type="radio" name="sexe" id="sexe" value="0">
+                <label class="form-check-label" for="inlineRadio1">Femme</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input formControlName="sexe" class="form-check-input" type="radio" name="sexe" id="sexe" value="1">
+                <label class="form-check-label" for="inlineRadio2">Homme</label>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-1 justify-content-center ">
+        <div class="col-md-12 col-lg-3 text-center">
+            <input formControlName="nom" class="form-control input-lg" placeholder="Nom" type="text">
+        </div>
+
+        <div class="col-md-12 mt-1  col-lg-3 text-center">
+            <input formControlName="prenom" class="form-control input-lg" placeholder="Prénom" type="text">
+        </div>
+    </div>
+    <div class="row mt-1 justify-content-center">
+        <div class="col col-lg-6 text-center">
+            <input formControlName="phone" class="form-control input-lg" placeholder="Numéro de mobile" type="text">
+        </div>
+    </div>
+    <div class="row mt-1 justify-content-center">
+        <div class="col col-lg-6  text-center">
+            <input formControlName="mail" class="form-control input-lg" placeholder="Adresse email" type="text">
+        </div>
+    </div>
+    <div class="row mt-2 justify-content-center">
+        <div class="col-12 col-lg-6 text-center ">
+            <button type="submit" class="btn btn-info w-100"><i class="fa fa-step-forward"></i> suivant
+            </button>
+        </div>
+    </div>
+
+
+</form>
+<div *ngIf="!showNext">
+    <form [formGroup]="addFormUser" (ngSubmit)="onSubmitUser()">
+        <div class="row  mt-1 justify-content-center">
+            <div class="col">
+                <p class="bg-danger text-white">{{errorMessage}}</p>
+            </div>
+        </div>
+        <div class="row  mt-1 justify-content-center">
+            <div class="col">
+                <p class="bg-success text-white">{{seccussMessage}}</p>
+            </div>
+        </div>
+        <div class="row mt-1 justify-content-center">
+            <div class="col col-lg-6  text-center">
+                <input name="login" formControlName="login" id="login" class="form-control input-lg"
+                    placeholder="User name " type="text">
+            </div>
+        </div>
+        <div class="row mt-1 justify-content-center">
+            <div class="col col-lg-6 text-center">
+                <input class="form-control input-lg" name="pwd1" formControlName="pwd1" id="pwd1"
+                    placeholder="Mot de passe" type="password">
+            </div>
+        </div>
+        <div class="row mt-1 justify-content-center">
+            <div class="col col-lg-6 text-center">
+                <input class="form-control input-lg" name="pwd2" formControlName="pwd2" id="pwd2"
+                    placeholder="Confermer le mot de passe" type="password">
+            </div>
+        </div>
+        <div class="row mt-1 justify-content-center">
+            <div class="col-12 col-lg-6 text-center">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        <p class="lead small">Se souvenir de moi sur cet appareil </p>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-2 justify-content-center">
+            <div class="col-12 col-lg-6 text-center ">
+                <button [disabled]="!addFormUser.valid" type="submit" class="btn btn-info w-100"><i
+                        class="fa fa-link"></i> Enregistrer
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="row mt-2 mb-5  ">
+    <div class="col-12 text-center ">
+        <p class="lead small">Vous avez perdu votre mot de passe ? </p>
+    </div>
+</div>

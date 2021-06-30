@@ -1,0 +1,29 @@
+
+<a  (click)="onSelect(retaurant)"   class=" list-group-item-action flex-column align-items-start">
+  
+    <p-splitter [style]="{'height': '40%'}" [panelSizes]="[70,30]">
+        <ng-template>
+            <img [src]="retaurant.imgleft" class="img-fluid">
+        </ng-template>
+        <ng-template>
+            <p-splitter [style]="{'height': '20%'}" layout="vertical" [panelSizes]="[50,50]">
+                <ng-template>
+                    <img [src]="retaurant.imgtop" class="img-fluid" alt="">
+                </ng-template>
+                <ng-template>
+                    <img [src]="retaurant.imgbuttom" class="img-fluid">
+                </ng-template>
+            </p-splitter>
+
+        </ng-template>
+    </p-splitter>
+
+    <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1 text-capitalize">{{retaurant.title}}</h5>
+        <small>{{retaurant.minimum}} 10-19Min</small>
+    </div>
+
+    <i class="fa fa-star" aria-hidden="true" style="color:rgb(255, 197, 5)"></i> <small> 4.3(658) - 0.5km
+        {{retaurant.rated}} {{retaurant.distance}} - <span *ngIf="retaurant.deliveryfeee==0"> Livraison gratuite </span><span *ngIf="retaurant.deliveryfeee!=0">Frais de livraison {{retaurant.deliveryfeee}} dt</span> </small>
+</a>
+

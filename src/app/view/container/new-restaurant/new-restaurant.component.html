@@ -1,0 +1,17 @@
+<a href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
+
+    <p-splitter [style]="{'height': '120px'}" [panelSizes]="[99,1]">
+        <ng-template>
+            <img [src]="newretaurant.imgpathcenter"  class="img-fluid rounded mx-auto d-block" >
+        </ng-template>
+        <ng-template>
+           
+        </ng-template>
+    </p-splitter>
+
+
+    <h5 class="mb-1 text-capitalize">{{newretaurant.title}}</h5>
+    
+    <i class="fa fa-star" aria-hidden="true" style="color:rgb(199, 197, 70)"></i> <small>
+        {{newretaurant.rated}} {{newretaurant.distance}} <br> frais de livraison <br> {{newretaurant.deliveryfee}}</small>
+</a>

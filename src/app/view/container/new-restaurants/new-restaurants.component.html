@@ -1,0 +1,14 @@
+<div class="row justify-content-center">
+    <p class="h5">
+        Nouveaux restaurants
+    </p>
+    <div class="scrollmenu col-lg-8">
+       
+        <ul class="list-group list-group-flush list-group-horizontal">
+            <li *ngFor="let newretaurant of newretaurants " class="list-group-item">
+
+                <app-new-restaurant [newretaurant]='newretaurant'></app-new-restaurant>
+            </li>
+        </ul>
+    </div>
+</div>

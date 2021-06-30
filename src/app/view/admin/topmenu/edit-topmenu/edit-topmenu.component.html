@@ -1,0 +1,60 @@
+<div class="container">
+<div class="card ">
+    <div class="card-header">
+        <h3>Ajouter un element de menu</h3>
+        <p class="text-muted">   Veuillez saisir les informations suivantes </p>
+    </div>
+
+    <form [formGroup]="addForm"  (ngSubmit)="onSubmit(addForm.value)">
+        <div class="card-body">
+
+            <div class="row justify-content-center ">
+
+
+                <div class="col-md-4">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-cube" aria-hidden="true"></i>
+                                &ensp;<span>
+                                    <h6> title </h6>
+                                </span>
+                            </span>
+                        </div>
+
+                        <input minlength="2" type="text" class="form-control" placeholder="   titre" name="title"
+                            formControlName="title" id="title">
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+
+                <div class="col-md-4">
+                    <input type="file" #file id="real" (change)="onFileChanged($event)">
+                    <img class="profile-img-card" (click)="file.click()" src={{url}} *ngIf="url">
+                  </div>
+               
+            </div>
+        
+
+            <br>
+
+
+        </div>
+        <div class="card-footer">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+
+                    <button type="submit" class="btn btn-block btn-success"><span>Sauvegarder</span></button>
+                </div>
+                <div class="col-md-6">
+                    <button (click)="cancel()" class="btn btn-block btn-danger" type="button"><span
+                            style="color: white;">Annuler</span></button>
+
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+</div>
+</div>

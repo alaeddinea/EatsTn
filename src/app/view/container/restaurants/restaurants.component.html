@@ -1,0 +1,163 @@
+<!-- filter-->
+<div class="row justify-content-center">
+    <p class="h5">
+        Restaurants
+    </p>
+    <div class="sticky-top bg-white col-lg-4">
+        <div class="scrollmenu">
+            <ul class="list-group list-group-flush  list-group-horizontal">
+                <li class="list-group-item" *ngIf="filterDeliveryClicked">
+                    <button [disabled]="false" class="btn btn-light" (click)="initAllFilter()">
+                        <i class="fa fa-refresh" aria-hidden="true"></i> effacer tout
+                    </button>
+                </li>
+                <li class="list-group-item ">
+                    <!-- Extra small button group -->
+                    <div class="btn-group">
+                        <button (click)="showDialog()" class="btn btn-default btn-xs dropdown-toggle" type="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Our best<span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            ...
+                        </ul>
+                    </div>
+                </li>
+                <li class="list-group-item ">
+                    <!-- Extra small button group -->
+                    <div class="btn-group" [ngClass]="{'bg-info rounded-pill':filterDeliveryClicked}">
+                        <button (click)="showDialog2()" class="btn btn-default btn-xs dropdown-toggle" type="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{palceholderFilter}} <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            ...
+                            "</ul>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <!-- Extra small button group -->
+                    <div class="btn-group">
+                        <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            Minimum <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            ...
+                        </ul>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+
+        <p-dialog position="bottom" header="Sort" [(visible)]="display" styleClass="mydialog">
+            <div>
+                <p style="visibility: hidden;">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                </p>
+            </div>
+            <div class="list-group ">
+                <div class="list-group-item list-group-item-action flex-column align-items-start active">
+                    Notre meilleur
+                </div>
+                <div class="list-group-item list-group-item-action flex-column align-items-start ">
+                    Le plus populaire
+                </div>
+                <div class="list-group-item list-group-item-action flex-column align-items-start ">
+                    Le plus proche
+                </div>
+                <div class="list-group-item list-group-item-action flex-column align-items-start ">
+                    Les mieux notés
+                </div>
+                <div class="list-group-item list-group-item-action flex-column align-items-start ">
+                    Nouvellement ajouté
+                </div>
+            </div>
+            <br>
+        </p-dialog>
+        <p-dialog position="bottom" [(visible)]="displayDeliveryfee">
+
+            <div>
+                <p style="visibility: hidden;">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                </p>
+            </div>
+            <ng-template pTemplate="header">
+                frais de livraison
+            </ng-template>
+            <div class=" text-center">
+
+                <div *ngIf="rangeValue==0">
+                    <p class="font-weight-bold">Livraison gratuite </p>
+
+                </div>
+                <div *ngIf="rangeValue==1">
+                    <p class="font-weight-bold">1 dt ou moins </p>
+
+                </div>
+                <div *ngIf="rangeValue==2">
+                    <p class="font-weight-bold">2 dt ou moins </p>
+
+                </div>
+                <div *ngIf="rangeValue==3">
+                    <p class="font-weight-bold">3 dt ou moins </p>
+
+                </div>
+                <div *ngIf="rangeValue==4">
+                    <p class="font-weight-bold">Toute </p>
+                    <p class="h6">
+                        découvrez les restaurants lointains!
+                    </p>
+                </div>
+
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <input class="form-control input-lg " type="range" name="range" step="1" min="0" max="4"
+                            [(ngModel)]="rangeValue">
+                    </div>
+                </div>
+
+
+
+
+                <p-footer>
+                    <div class="text-center">
+                        <button (click)="filterDeleveryfee(rangeValue)" type="button"
+                            class="btn btn-primary btn-lg btn-block">Appaliquer</button>
+                    </div>
+                </p-footer>
+            </div>
+
+
+
+        </p-dialog>
+    </div>
+
+    <!-- Restaurant-item-->
+
+    <div class="list-group list-group-flush  ">
+        <div class="search-results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollUpDistance]="1.5"
+            [infiniteScrollThrottle]="50" (scrolled)="onScrollDown()" (scrolledUp)="onScrollUp()">
+            <div *ngFor="let retaurant of entities" class=" list-group-item list-group-item-action shadow mb-1">
+              
+                        <app-restaurant [retaurant]='retaurant'></app-restaurant>
+                  
+            </div>
+        </div>
+        <!-- spinner -->
+        <div class="row pb-5 text-center">
+            <div class="col p-3">
+                <ngx-spinner bdOpacity=0.9 bdColor="" size="default" color="#576b95" type="ball-pulse-sync"
+                    [fullScreen]="false">
+
+                </ngx-spinner>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<br>
+<br>

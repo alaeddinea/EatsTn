@@ -1,0 +1,12 @@
+<div class="row justify-content-center">
+    <div class="scrollmenu col-lg-8 ">
+        <ul class="list-group list-group-flush list-group-horizontal" id="list-tab" role="tablist">
+
+            <li (click)="currentLiClicked(i)" *ngFor="let menu of entities ; let i = index"
+                class="list-group-item list-group-item-action  "
+                [ngClass]="{' border  bgGry   ':indexClicked==i}">
+                <app-item [item]="menu"></app-item>
+            </li>
+        </ul>
+    </div>
+</div>

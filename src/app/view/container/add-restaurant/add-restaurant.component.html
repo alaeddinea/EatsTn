@@ -1,0 +1,357 @@
+<!--<div class="map-container">
+    <div class="map-frame">
+        <div id="map"></div>
+    </div>
+</div>-->
+<div class="container-fluid bg-white  mb-5 ">
+    <div class="text-center">
+        <h2 class="font-weight-bold text-capitalize">Créer un restaurant ou autre </h2>
+    </div>
+  
+    <mat-vertical-stepper #stepper>
+        <form [formGroup]="addForm" >
+        <mat-step [stepControl]="firstFormGroup" errorMessage="Name is required.">
+           
+                <ng-template matStepLabel>Général</ng-template>
+
+                <div>
+                    <mat-form-field>
+                        <mat-label>Nom </mat-label>
+                        <input matInput placeholder="Veuillez saisir un nouveau nom" formControlName="title"
+                            required>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field>
+                        <mat-label>Description</mat-label>
+                        <input matInput placeholder="Ajoutez une courte description" formControlName="description"
+                            required>
+                    </mat-form-field>
+                </div>
+
+
+                <div>
+
+                    <button mat-button matStepperNext>suivant</button>
+                </div>
+            
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup" errorMessage="Address is required.">
+           
+                <ng-template matStepLabel>Contact</ng-template>
+                <div>
+                    <mat-form-field>
+                        <mat-label>Numéro de téléphone</mat-label>
+                        <input matInput placeholder="entrez un uméro de téléphone " formControlName="phone"
+                            required>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field>
+                        <mat-label>Numéro de téléphone WhatsApp</mat-label>
+                        <input matInput placeholder="entrez votre numéro de téléphone WhatsApp"
+                            formControlName="whatsapp" required>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field>
+                        <mat-label>Addresse courriel</mat-label>
+                        <input matInput placeholder="Addresse courriel" formControlName="mail" required>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field>
+                        <mat-label>Site web</mat-label>
+                        <input matInput placeholder="Accédez au site web" formControlName="site" required>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field>
+                        <mat-label>Facebook</mat-label>
+                        <input matInput placeholder="Facebook" formControlName="facebook" required>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field>
+                        <mat-label>Instgramme</mat-label>
+                        <input matInput placeholder="Instgramme" formControlName="instagrame" required>
+                    </mat-form-field>
+                </div>
+
+                <div>
+
+                    <button mat-button matStepperPrevious>prochain</button>
+                    <button mat-button matStepperNext>suivant</button>
+                </div>
+          
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup" errorMessage="Address is required.">
+           
+                <ng-template matStepLabel>Emplacement</ng-template>
+                <div>
+                    <mat-form-field>
+                        <mat-label>Adresse</mat-label>
+                        <input matInput placeholder="Voie" formControlName="addresse" required>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field>
+                        <mat-label>Ville</mat-label>
+                        <input matInput placeholder="Ville" formControlName="ville" required>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field>
+                        <mat-label>Code postal</mat-label>
+                        <input matInput placeholder="Code postal" formControlName="codepostale" required>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field>
+                        <mat-label>lat</mat-label>
+                        <input matInput placeholder="lat" formControlName="lat" required>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field>
+                        <mat-label>lng</mat-label>
+                        <input matInput placeholder="lng" formControlName="lng" required>
+                    </mat-form-field>
+                </div>
+                <button mat-button (click)="showMap()">Localisation sur la carte</button>
+                <div>
+
+                    <button mat-button matStepperPrevious>prochain</button>
+                    <button mat-button matStepperNext>suivant</button>
+                </div>
+            
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup" errorMessage="Address is required.">
+           
+                <ng-template matStepLabel>Horaires</ng-template>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="typeHoraire" id="typeHoraire"
+                                value="1" (change)="changeHoraireChoix($event)" formControlName="typeHoraire">
+                            <label class="form-check-label" for="typeHoraire">
+                                Toujours ouvert
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="typeHoraire" id="typeHoraire"
+                                value="2" (change)="changeHoraireChoix($event)" formControlName="typeHoraire">
+                            <label class="form-check-label" for="typeHoraire">
+                                Fermé définitivement
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="typeHoraire" id="typeHoraire"
+                                value="3" (change)="changeHoraireChoix($event)" formControlName="typeHoraire">
+                            <label class="form-check-label" for="typeHoraire">
+                                Ouvert selon un certain horaire
+                            </label>
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <div *ngIf="showDetailHoraire">
+
+
+                    <div class="row">
+                        <div class="col-2">
+                            lun
+                        </div>
+                        <div class="col-5">
+                            <label for="exampleInputEmail1 text-left">Lancement</label>
+                            <input type="time" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                placeholder="" formControlName="lunLancement">
+                        </div>
+                        <div class="col-5">
+                            <label for="exampleInputEmail1 text-left">Fermeture</label>
+                            <input type="time" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                placeholder="" formControlName="lunFermeture">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            mar
+                        </div>
+                        <div class="col-5">
+                            <label for="exampleInputEmail1 text-left">Lancement</label>
+                            <input type="time" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                placeholder="" formControlName="marLancement">
+                        </div>
+                        <div class="col-5">
+                            <label for="exampleInputEmail1 text-left">Fermeture</label>
+                            <input type="time" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                placeholder="" formControlName="marFermeture">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            mer
+                        </div>
+                        <div class="col-5">
+                            <label for="exampleInputEmail1 text-left">Lancement</label>
+                            <input type="time" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                placeholder="" formControlName="merLancement">
+                        </div>
+                        <div class="col-5">
+                            <label for="exampleInputEmail1 text-left">Fermeture</label>
+                            <input type="time" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                placeholder="" formControlName="merFermeture">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            jeu
+                        </div>
+                        <div class="col-5">
+                            <label for="exampleInputEmail1 text-left">Lancement</label>
+                            <input type="time" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                placeholder="" formControlName="jeuLancement">
+                        </div>
+                        <div class="col-5">
+                            <label for="exampleInputEmail1 text-left">Fermeture</label>
+                            <input type="time" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                placeholder="" formControlName="jeuFermeture">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            ven
+                        </div>
+                        <div class="col-5">
+                            <label for="exampleInputEmail1 text-left">Lancement</label>
+                            <input type="time" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                placeholder="" formControlName="venLancement">
+                        </div>
+                        <div class="col-5">
+                            <label for="exampleInputEmail1 text-left">Fermeture</label>
+                            <input type="time" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                placeholder="" formControlName="venFermeture">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            sam
+                        </div>
+                        <div class="col-5">
+                            <label for="exampleInputEmail1 text-left">Lancement</label>
+                            <input type="time" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                placeholder="" formControlName="samLancement">
+                        </div>
+                        <div class="col-5">
+                            <label for="exampleInputEmail1 text-left">Fermeture</label>
+                            <input type="time" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                placeholder="" formControlName="samFermeture">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            dim
+                        </div>
+                        <div class="col-5">
+                            <label for="exampleInputEmail1 text-left">Lancement</label>
+                            <input type="time" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                placeholder="" formControlName="dimLancement">
+                        </div>
+                        <div class="col-5">
+                            <label for="exampleInputEmail1 text-left">Fermeture</label>
+                            <input type="time" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                placeholder="" formControlName="dimFermeture">
+                        </div>
+                    </div>
+                </div>
+                <div>
+
+                    <button mat-button matStepperPrevious>prochain</button>
+                    <button mat-button matStepperNext>suivant</button>
+                </div>
+           
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup" errorMessage="Address is required.">
+            
+
+                <ng-template matStepLabel>Gamme de prix </ng-template>
+                <div  class="row " *ngFor="let gamme of gammes">
+                    <div class="col-12 ">
+                        <div class="form-check">
+                            <input (change)="changeGender($event)"  class="form-check-input" type="radio" name="gamme" id="gamme"
+                                value="{{gamme.id}}"  formControlName="gamme">
+                            <label class="form-check-label" for="gamme">
+                                {{gamme.symbole}} {{gamme.description}}
+                            </label>
+                        </div>
+                    </div>
+                 
+                </div>
+                <div>
+
+                    <button mat-button matStepperPrevious>prochain</button>
+                    <button mat-button matStepperNext>suivant</button>
+                </div>
+           
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Terminé</ng-template>
+            <p>Vous avez maintenant terminé.</p>
+            <div>
+
+                <button mat-button matStepperPrevious>prochain</button>
+                <button mat-button (click)="onSubmit(addForm.value)">Sauvgarder</button>
+                <button mat-button (click)="stepper.reset()">Reset</button>
+            </div>
+        </mat-step>
+    </form>
+    </mat-vertical-stepper>
+</div>
+
+
+<!--<p-dialog [(visible)]="displayMap" [modal]="true" [responsive]="true" [style]="{width: '70%', minWidth: '200px'}"
+    [minY]="70" [baseZIndex]="10000">
+    <p-header>
+        <span class="ui-panel-title" style="font-size:18px;display:inline-block;margin-top:2px"><i
+                class="pi pi-ban"></i> informations
+        </span>
+    </p-header>
+
+
+    <div class="map-container">
+        <div class="map-frame">
+            <div id="map"></div>
+        </div>
+    </div>
+
+    <p-footer>
+
+        <button pButton type="button" class="ui-button-success" (click)="close()" pButton type="button"
+            icon="pi pi-plus" label="non"></button>
+        <button pButton type="button" class="ui-button-danger"  pButton type="button"
+            icon="pi pi-plus" label="oui"></button>
+
+    </p-footer>
+
+
+</p-dialog>-->
+<p-dialog [(visible)]="displayMap"  [modal]="true" [style]="{width: '50vw'}" [maximizable]="true" [baseZIndex]="10000"
+[draggable]="false" [resizable]="false">
+    
+
+    <div class="map-container">
+        <div class="map-frame">
+            <div id="map"></div>
+        </div>
+    </div>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+        cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</p-dialog>

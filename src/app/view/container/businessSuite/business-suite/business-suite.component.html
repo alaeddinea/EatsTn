@@ -1,0 +1,58 @@
+<div [ngStyle]="{'display':displayFistShow ? 'block' : 'none'}" class=" mt-5 mb-5 shadow form-group bg-white container">
+    <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style=" text-align: center;">
+      
+
+        <div class="text-center">
+
+            <h2 class="font-weight-bold text-capitalize">Créer un restaurant ou autre </h2>
+        </div>
+        <div class="text-left">
+            <h4> <i class="fa fa-star-o" aria-hidden="true" style="color:rgb(f, f, f)"></i>
+                Mettez vos produits en valeur
+            </h4>
+            <p class="font-weight-light">Lorsque vous aurez ajouté votre stock, vous pourrez regrouper les produits par
+                thème afin qu’il soit
+                possible de les trouver d’un simple coup d’œil.</p>
+        </div>
+        <br>
+        <div class="text-left">
+            <h4> <i class="fa fa-cart-arrow-down" aria-hidden="true" style="color:rgb(f, f, f)"></i>
+                Facilitez les achats de vos clients
+
+            </h4>
+            <p class="font-weight-light">Les clients peuvent parcourir vos produits sur Facebook ou Instagram et y
+                régler directement leurs achats. Vous pouvez aussi choisir de les rediriger vers votre boutique en
+                ligne.</p>
+        </div>
+        <br>
+        <div class="text-left">
+            <h4> <i class="fa fa-money" aria-hidden="true" style="color:rgb(f, f, f)"></i>
+                Personnaliser votre boutique
+            </h4>
+            <p class="font-weight-light">Ajoutez vos propres visuels et votre marque.</p>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div class="text-left">
+            <p>
+                Vous serez redirigé(e) vers le Gestionnaire des ventes afin de configurer votre boutique.
+            </p>
+        </div>
+        <br>
+        <div class="text-center">
+            <button [disabled]="false" class="btn btn-primary" (click)="closeFistShow()">Accéder au Gestionnaire des
+                ventes.
+                <i class="fa fa-eye" aria-hidden="true"></i></button>
+
+        </div>
+        <br>
+    </div>
+
+</div>
+
+<br>
+<br>
+<div *ngIf="!displayFistShow">
+<app-add-restaurant></app-add-restaurant>
+</div>

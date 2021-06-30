@@ -1,0 +1,120 @@
+<div class="scrollmenu">
+    <ul class="list-group list-group-flush list-group-horizontal">
+        <li class="list-group-item">
+            <!-- Extra small button group -->
+            <div class="btn-group">
+                <button (click)="showDialog()" class="btn btn-default btn-xs dropdown-toggle" type="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Our best<span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    ...
+                </ul>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <!-- Extra small button group -->
+            <div class="btn-group">
+                <button (click)="showDialog2()" class="btn btn-default btn-xs dropdown-toggle" type="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    frais de livraison <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    ...
+                </ul>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <!-- Extra small button group -->
+            <div class="btn-group">
+                <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Minimum <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    ...
+                </ul>
+            </div>
+        </li>
+
+    </ul>
+</div>
+
+<p-dialog position="bottom" header="Sort" [(visible)]="display" styleClass="mydialog">
+    <div>
+        <p style="visibility: hidden;">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+        </p>
+    </div>
+    <div class="list-group ">
+        <div class="list-group-item list-group-item-action flex-column align-items-start active">
+            Our Best
+        </div>
+        <div class="list-group-item list-group-item-action flex-column align-items-start ">
+            Most popular
+        </div>
+        <div class="list-group-item list-group-item-action flex-column align-items-start ">
+            Closest
+        </div>
+        <div class="list-group-item list-group-item-action flex-column align-items-start ">
+            Highest rated
+        </div>
+        <div class="list-group-item list-group-item-action flex-column align-items-start ">
+            Newly added
+        </div>
+    </div>
+</p-dialog>
+<p-dialog position="bottom" [(visible)]="display2">
+
+    <div>
+        <p style="visibility: hidden;">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+        </p>
+    </div>
+    <ng-template pTemplate="header">
+        frais de livraison
+    </ng-template>
+    <div class=" text-center">
+        
+        <div *ngIf="rangeValue==0">
+            <p   class="font-weight-bold">Livraison gratuite </p>
+           
+        </div>
+        <div *ngIf="rangeValue==1">
+            <p  class="font-weight-bold">1 dt ou moins </p>
+           
+        </div>
+        <div *ngIf="rangeValue==2">
+            <p   class="font-weight-bold">2 dt ou moins </p>
+           
+        </div>
+        <div *ngIf="rangeValue==3">
+            <p   class="font-weight-bold">3 dt ou moins </p>
+           
+        </div>
+        <div *ngIf="rangeValue==4">
+            <p   class="font-weight-bold">Toute  </p>
+            <p class="h6">
+                découvrez les restaurants lointains!
+            </p>
+        </div>
+      
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <input  class="form-control input-lg "  type="range" name="range" step="1" min="0" max="4" [(ngModel)]="rangeValue">
+            </div>
+        </div>
+
+            
+          
+      
+        <p-footer>
+            <div class="text-center">
+                <button (click)="filterDeleveryfee(rangeValue)" type="button" class="btn btn-primary btn-lg btn-block">Appaliquer</button>
+            </div>
+        </p-footer>
+    </div>
+
+
+
+</p-dialog>

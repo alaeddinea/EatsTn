@@ -1,0 +1,102 @@
+<div *ngIf="!showSetting" class="row mt-3  ">
+    <div class="col-9 col-lg-9 "></div>
+    <div class="col-2 col-lg-2 ">
+        <h1><i class="fa fa-cog " (click)="showSettings()"></i></h1> 
+    </div>
+</div>
+<div *ngIf="!showSetting" class="row mt-3 justify-content-center ">
+    <div class="col-12 col-lg-6 text-center ">
+        <img src="assets/userProfileIcon_gray.png" height="50" width="60" alt="" class="img-fluid">
+    </div>
+</div>
+<div *ngIf="!showSetting" class="row mt-3 justify-content-center ">
+    <div class="col-12 col-lg-6 ">
+        <h3 *ngIf="personelle" class="text-capitalize"> {{personelle.prenom}} {{personelle.nom}} </h3>
+    </div>
+</div>
+<div *ngIf="!showSetting" class="row mt-3 justify-content-center ">
+    <div class="col-12 col-lg-6 ">
+        <h3 *ngIf="personelle">Membre depuis {{personelle.dateCreation | date:'longDate'}} </h3>
+    </div>
+</div>
+
+<div *ngIf="showSetting">
+    <div class="row mt-1  ">
+        <div class="col-lg-3  "></div>
+        <div class="col-1 col-lg-1 bg-light">
+            <i class="h5 fa fa-long-arrow-left " (click)="showSettings()"></i>
+        </div>
+        <div class="col-10 col-lg-5 bg-light ">
+            <span class="h6">Paramètres</span>
+        </div>
+    </div>
+    <div class="row mt-3 justify-content-center ">
+        <div class="col-12 col-lg-6 text-center ">
+            <p-accordion>
+                <p-accordionTab header="Modifier votre profil">
+                    <div class="row mt-2 justify-content-center ">
+                        <div class="col-12 col-lg-6 text-center ">
+                            <p class="lead small">Merci de saisir vos informations </p>
+                        </div>
+                    </div>
+                    <form [formGroup]="addFormPerso" (ngSubmit)="onSubmit(addFormPerso.value)">
+                        <div class="row justify-content-center">
+                            <div class="col text-center">
+                                <div class="form-check form-check-inline">
+                                    <input formControlName="sexe" class="form-check-input" type="radio" name="sexe"
+                                        id="sexe" value="0">
+                                    <label class="form-check-label" for="inlineRadio1">Femme</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input formControlName="sexe" class="form-check-input" type="radio" name="sexe"
+                                        id="sexe" value="1">
+                                    <label class="form-check-label" for="inlineRadio2">Homme</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-1 justify-content-center ">
+                            <div class="col-md-12 col-lg-3 text-center">
+                                <input formControlName="nom" class="form-control input-lg" placeholder="Nom"
+                                    type="text">
+                            </div>
+
+                            <div class="col-md-12  col-lg-3 text-center">
+                                <input formControlName="prenom" class="form-control input-lg" placeholder="Prénom"
+                                    type="text">
+                            </div>
+                        </div>
+                        <div class="row mt-1 justify-content-center">
+                            <div class="col col-lg-6 text-center">
+                                <input formControlName="phone" class="form-control input-lg"
+                                    placeholder="Numéro de mobile" type="text">
+                            </div>
+                        </div>
+                        <div class="row mt-1 justify-content-center">
+                            <div class="col col-lg-6  text-center">
+                                <input formControlName="mail" class="form-control input-lg" placeholder="Adresse email"
+                                    type="text">
+                            </div>
+                        </div>
+                        <div class="row mt-2 justify-content-center">
+                            <div class="col-12 col-lg-6 text-center ">
+                                <button type="submit" class="btn btn-info w-100"><i class="fa fa-link"></i> Soumettre
+                                </button>
+                            </div>
+                        </div>
+
+
+                    </form>
+
+                </p-accordionTab>
+
+            </p-accordion>
+            <div class="row mt-5 justify-content-center">
+                <div class="col-12 col-lg-6 text-center ">
+                    <button (click)="logout()" class="btn btn-danger w-100"><i class="fa fa-sign-out"></i>
+                        Se déconecter
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

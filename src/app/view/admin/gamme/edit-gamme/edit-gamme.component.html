@@ -1,0 +1,73 @@
+<div class="container">
+    <div class="card ">
+        <div class="card-header">
+            <h3>Ajouter un Gamme de Prix</h3>
+            <p class="text-muted"> Veuillez saisir les informations suivantes </p>
+        </div>
+
+        <form [formGroup]="addForm" (ngSubmit)="onSubmit(addForm.value)">
+            <div class="card-body">
+
+                <div class="row justify-content-center ">
+
+
+                    <div class="col-md-4">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-cube" aria-hidden="true"></i>
+                                    &ensp;<span>
+                                        <h6> symbole </h6>
+                                    </span>
+                                </span>
+                            </div>
+
+                            <input minlength="2" type="text" class="form-control" placeholder="   symbole"
+                                name="symbole" formControlName="symbole" id="title">
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-4">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-cube" aria-hidden="true"></i>
+                                    &ensp;<span>
+                                        <h6> description </h6>
+                                    </span>
+                                </span>
+                            </div>
+
+                            <input minlength="2" type="text" class="form-control" placeholder="   description"
+                                name="description" formControlName="description" id="title">
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+                <br>
+
+
+            </div>
+           
+                <div class="card-footer">
+                    <div class="row justify-content-center">
+                        <div class="col-md-6">
+
+                            <button type="submit"
+                                class="btn btn-block btn-success"><span>Sauvegarder</span></button>
+                        </div>
+                        <div class="col-md-6">
+                            <button (click)="cancel()" class="btn btn-block btn-danger" type="button"><span
+                                    style="color: white;">Annuler</span></button>
+
+                        </div>
+                    </div>
+                </div>
+           
+        </form>
+
+
+    </div>
+</div>

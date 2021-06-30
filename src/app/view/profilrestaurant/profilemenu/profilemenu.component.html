@@ -1,0 +1,36 @@
+
+<div  class="scrollmenu sticky-top">
+    <ul class="list-group list-group-flush list-group-horizontal">
+       
+        <li class="list-group-item  list-group-item-action" [ngClass]="{' border-bottom border-top border-dark ':indexClicked==i}" (click)="menu(menue.id,i)" *ngFor="let menue of entitiesCategoriemenu ; let i = index" >
+            <p class="text-uppercase font-weight-bold" > {{menue.title}}</p>
+           <!-- <hr  [ngClass]="{' bg-dark visible ':indexClicked==i,'invisible':indexClicked!=i}" >-->
+        </li>
+    </ul>
+</div>
+<div id='{{menue.id}}' class="container-fluid  " *ngFor="let menue of entitiesCategoriemenu" style="padding-top:70px;padding-bottom:70px">
+    <h5 class="mb-1 text-uppercase font-weight-normal">{{menue.title}}</h5> 
+    <ul class="list-group"  >
+        <span *ngFor="let article of entitiesArticle">
+        <li class="list-group-item list-group-item-action " *ngIf="article.categoriemenu.id===menue.id" >
+            <div class="row" >
+                <div class="col">
+                    <div class="row">
+                        <small class="text-capitalize font-weight-bold">{{article.title}} </small>
+                    </div>
+                    <div class="row">
+                        <small class="text-capitalize font-weight-normal">{{article.prix}} dt </small>
+                    </div>
+                    
+
+                </div>
+                <div class="col">
+                    <img style="height: 80px; width: 80px;" [src]="article.image">
+                </div>
+            </div>
+        </li>
+    </span>
+
+    </ul>
+</div>
+
